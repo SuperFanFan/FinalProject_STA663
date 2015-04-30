@@ -62,7 +62,6 @@ def update_P_optimized(a, b, n, m, s, Ptran_star):
     nk = np.zeros(m + 1)
     Ptran = np.zeros((m + 1, m + 1))
     Ptran[-1, -1] = 1
-    f = np.zeros(m)
     f_Ptran_star = 1.0
     
     # number of same states
@@ -74,8 +73,7 @@ def update_P_optimized(a, b, n, m, s, Ptran_star):
     for j in range(m):
         Ptran[j, j] = stats.beta.rvs(a + nii[j], b + 1)
         Ptran[j, j + 1] = 1.0 - Ptran[j, j]
-        f[j] = stats.beta.pdf(Ptran_star[j, j], a + nii[j], b + 1)
-        f_Ptran_star = f_Ptran_star * f[j]
+        f_Ptran_star = f_Ptran_star * stats.beta.pdf(Ptran_star[j, j], a + nii[j], b + 1)
     
     return nk, Ptran, f_Ptran_star
 
@@ -95,7 +93,6 @@ def update_Theta_optimized(c, d, m, y, s, nk, theta_star):
     n = len(y)
     sigma = np.sqrt(3.0)
     theta = np.repeat(2.0, m + 1)
-    f = np.zeros(m + 1)
     f_theta_star = 1.0
     
     # Update Theta
@@ -104,8 +101,7 @@ def update_Theta_optimized(c, d, m, y, s, nk, theta_star):
         var_theta = 1. / (1./d**2. + nk[i]/sigma**2.)
         mu_theta = var_theta * (c/d**2. + uk/sigma**2.)
         theta[i] = stats.norm.rvs(mu_theta, np.sqrt(var_theta))
-        f[i] = stats.norm.pdf(theta_star[i], mu_theta, np.sqrt(var_theta))
-        f_theta_star = f_theta_star * f[i]
+        f_theta_star = f_theta_star * stats.norm.pdf(theta_star[i], mu_theta, np.sqrt(var_theta))
         
     return theta, f_theta_star
 
@@ -142,7 +138,6 @@ def mcem_update_optimized(y, m, tol):
     theta_current, Ptran_current = theta, np.delete(np.diag(Ptran), -1)
     
     # MECM updates
-    np.random.seed(1234)
     for i in range(nsim):
         
         # E step
@@ -219,7 +214,6 @@ def model_fit_optimized(y, m, vsim, burn, theta_star, Ptran_star, c, d):
     F_lag_sum, F_sum = np.zeros((n, m + 1)), np.zeros((n, m + 1))       
     F_theta_star, F_Ptran_star = np.zeros(vsim), np.zeros(vsim)
 
-    np.random.seed(1234)
     # Gibbs steps
     for v in range(vsim):
         

@@ -59,7 +59,7 @@ def test_invalid_transition_probs_input():
     
 def test_state_counts_range_single():
     nk, Ptran, f_Ptran_star = mdl.update_P_optimized(a, b, n, m, s, Ptran_star)    
-    assert all(nk > 0.0) and all(nk < n)
+    assert all(nk > 0.0) and all(nk < n) and np.sum(nk) == n
     
 def test_transition_probs_support_single():
     nk, Ptran, f_Ptran_star = mdl.update_P_optimized(a, b, n, m, s, Ptran_star)

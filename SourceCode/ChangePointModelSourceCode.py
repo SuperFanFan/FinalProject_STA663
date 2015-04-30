@@ -149,7 +149,6 @@ def mcem_update(y, m, family, tol):
     theta_current, Ptran_current = theta, np.delete(np.diag(Ptran), -1)
     
     # MECM updates
-    np.random.seed(1234)
     for i in range(nsim):
         
         # E step
@@ -188,8 +187,8 @@ def mcem_update(y, m, family, tol):
                 return theta, Ptran
             
         # Loop control
-        if(i % 20 == 0):
-            print theta
+        # if(i % 20 == 0):
+        #    print theta
             
 ### Execution Functions
 def model_fit(y, m, vsim, burn, theta_star, Ptran_star, c, d, family):
@@ -200,9 +199,10 @@ def model_fit(y, m, vsim, burn, theta_star, Ptran_star, c, d, family):
               burn - length of burn-in period
               theta_star - MLE of model parameters
               Ptran_star - MLE of transition probabilities
-              c,d - prior normal parameters
+              c,d - prior parameters
               family - "gaussian" or "poisson", currently limited to the applications in our project
-        Return: Theta_p - posterior samples of model parameters
+        Return: Tau_p - posterior samples of (multiple) change points
+                Theta_p - posterior samples of model parameters
                 F_lag_sum, F_sum - posterior sums of marginal probs for latent states (need to average across simulations)
                 log_f_y - maximized log-likelihood for a given model
                 log_m - marginal likelihood for a given model """
@@ -226,11 +226,11 @@ def model_fit(y, m, vsim, burn, theta_star, Ptran_star, c, d, family):
         Ptran[j, j+1] = 1 - Ptran[j, j]
 
     # Store results
+    Tau_p = np.zeros((vsim, m))
     Theta_p = np.zeros((vsim, m + 1))
     F_lag_sum, F_sum = np.zeros((n, m + 1)), np.zeros((n, m + 1))       
     F_theta_star, F_Ptran_star = np.zeros(vsim), np.zeros(vsim)
 
-    np.random.seed(1234)
     # Gibbs steps
     for v in range(vsim):
         
@@ -242,6 +242,9 @@ def model_fit(y, m, vsim, burn, theta_star, Ptran_star, c, d, family):
     
         # Update Theta
         theta, f_theta_star = update_Theta(c, d, m, y, s, nk, theta_star, family)
+        
+        # estimate change point
+        Tau_p[v,:] = (np.delete(nk, -1)).cumsum()
 
         # Save results
         Theta_p[v,:] = theta
@@ -251,8 +254,10 @@ def model_fit(y, m, vsim, burn, theta_star, Ptran_star, c, d, family):
         if(v >= burn):
             F_lag_sum = F_lag_sum + F_lag
             F_sum = F_sum + F
-        if(v % 2000 == 0):
-            print v
+        if(v == vsim - 1):
+            print "Posterior Sampling Finished Successfully."
+        # if(v % 2000 == 0):
+        #    print v
             
     ### compute marginal likelihood
     f_y = np.zeros((n, m + 1))
@@ -273,4 +278,4 @@ def model_fit(y, m, vsim, burn, theta_star, Ptran_star, c, d, family):
     log_f_Ptran_star = np.log(np.mean(F_Ptran_star[burn:]))
     log_m = log_f_y + log_pi_theta_star + log_pi_Ptran_star - log_f_theta_star - log_f_Ptran_star
     
-    return Theta_p, F_lag_sum, F_sum, log_f_y, log_m
+    return Tau_p, Theta_p, F_lag_sum, F_sum, log_f_y, log_m

@@ -155,7 +155,6 @@ def mcem_update_naive(y, m, tol):
     theta_current, Ptran_current = theta, np.delete(np.diag(Ptran), -1)
     
     # MECM updates
-    np.random.seed(1234)
     for i in range(nsim):
         
         # E step
@@ -245,7 +244,6 @@ def model_fit_naive(y, m, vsim, burn, theta_star, Ptran_star, c, d):
     F_lag_sum, F_sum = np.zeros((n, m + 1)), np.zeros((n, m + 1))       
     F_theta_star, F_Ptran_star = np.zeros(vsim), np.zeros(vsim)
 
-    np.random.seed(1234)
     # Gibbs steps
     for v in range(vsim):
         

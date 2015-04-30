@@ -71,7 +71,7 @@ def test_state_counts_range_iterative():
         F_lag, F, s_new = mdl.update_Sn_optimized(y, n, m, Ptran_new, theta_new, s_new)
         nk, Ptran_new, f_Ptran_star = mdl.update_P_optimized(a, b, n, m, s_new, Ptran_star)
         theta_new, f_theta_star = mdl.update_Theta_optimized(c, d, m, y, s, nk, theta_star)
-    assert all(nk > 0.0) and all(nk < n)
+    assert all(nk > 0.0) and all(nk < n) and np.sum(nk) == n
     
 def test_transition_probs_support_iterative():
     vsim = 10

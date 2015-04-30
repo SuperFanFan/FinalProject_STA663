@@ -14,5 +14,5 @@ allclean:
 	make clean
 	rm -f *pdf
 
-UnitTest:
-	py.test "UnitTest/."
+test:
+	py.test ~/FinalProject_STA663/UnitTest/.

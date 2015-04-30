@@ -1,0 +1,1804 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{STA663\_Final\_Report\_Li\_Fan}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \subsection{\# Fitting Multiple Change-point Models for Time Series
+Data}\label{fitting-multiple-change-point-models-for-time-series-data}
+
+Fan Li (fl53)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c}{\PYZsh{}\PYZsh{}\PYZsh{} configuration}
+        \PY{k+kn}{from} \PY{n+nn}{\PYZus{}\PYZus{}future\PYZus{}\PYZus{}} \PY{k+kn}{import} \PY{n}{division}
+        \PY{k+kn}{import} \PY{n+nn}{os}
+        \PY{k+kn}{import} \PY{n+nn}{sys}
+        \PY{k+kn}{import} \PY{n+nn}{glob}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib.pyplot} \PY{k+kn}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{scipy.stats} \PY{k+kn}{as} \PY{n+nn}{stats}
+        \PY{k+kn}{import} \PY{n+nn}{scipy.linalg} \PY{k+kn}{as} \PY{n+nn}{la}
+        
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{o}{\PYZpc{}}\PY{k}{precision} 4
+        \PY{n}{plt}\PY{o}{.}\PY{n}{style}\PY{o}{.}\PY{n}{use}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{ggplot}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \subsection{Background}\label{background}
+
+This project is based on the paper ``Estimation and comparison pf
+multiple change-point models'' by Chib (1998).
+
+Change-point models are proposed to detect possible heterogeneity in a
+stochatic process. Formally, suppose we have observed a set observations
+indexed by time $\{X\}_{t=1}^T$, where $\{X\}_{t=1}^{t_k}$ are
+identically distributed according to $\mathcal{F}_0$, and
+$\{X\}_{t=t_k+1}^T$ by $\mathcal{F}_1$. If
+$\mathcal{F}_0\neq \mathcal{F}_1$, we call the time point $t=t_k$ a
+change point, which is unknown and of interest in practice. In the above
+process, only a single change point exists. In other complex models,
+there could be more than one such change points underlying the
+heterogeneity. A major focus of change-point models is to determine the
+totality of such change-points, revealing the dynamics of an ongoing
+process. The application of change-point models encompass a broad
+spectrum, such as control theory, time series and reliability analysis.
+
+Based on how the observations are collected, change-point models are
+classified as sequential and posteriori detection models. Sequential
+models updates the estimates along with the collection, while the
+posteriori models analyzed the data post to the collection. Based on
+model assumptions, we have parametric and non-parametric detection
+models. Further, models are classified into dicrete- and continuous-time
+(state) detection models, by the nature of the stochastic process. In
+this project, we'll mainly looks at the discrete-time discrete-state
+Markov process with a multiple change-point posetriori detection model.
+To follow the ideas of the paper (Chib 1998), we will consider
+parametric models. We will also compare with more up-to-date
+nonparametric models in application of the algorithm to the real data
+sets.
+
+\subsubsection{Parameterization}\label{parameterization}
+
+We state the model formally as the following. Suppose we observe a time
+series $Y_n=\{y_1,\ldots,y_n\}$ where the distribution of $y_t|Y_{t-1}$
+depends on the unknown parameter $\xi_t$. Given a collection of unknown
+time of change-point $\Upsilon_m=\{\tau_1,\ldots,\tau_m\}$ and let
+$\tau_0=0$, $\tau_{m+1}=n$, we further assume the regime $\xi_t$ depends
+on the the interval determined by consectutive change-point time:
+
+\[\xi_t=\begin{cases} \theta_1 &\mbox{if } \tau_0 < t \leq \tau_1, \\ 
+\theta_2 &\mbox{if } \tau_1 < t \leq \tau_2,\\
+\vdots &\vdots\\
+\theta_m &\mbox{if } \tau_{m_1} < t \leq \tau_m,\\
+\theta_{m+1} &\mbox{if } \tau_{m} < t \leq \tau_{m+1}. \end{cases}\]
+
+Further let $Y_t=(y_1,\ldots,y_t)$ indicate the history up to time $t$
+and $Y^{t,t'}=(y_t,\ldots,y_{t'})$ the history from $t$ to $t'$, then
+the joint likelihood of the time series is expressed as
+\[\mathcal{L}(Y_n|\Theta,\Upsilon_m)=\prod_{k=1}^{m+1}f(Y^{\tau_{k-1}+1,\tau_k}|Y_{\tau_{k-1},\theta_k,\tau_k}).\]
+
+Given the prior $\pi(\Theta,\Upsilon)$, the posterior inference can be
+carried out via Morkov Chain Monte Carlo (MCMC). However, the
+conventional method which samples $\tau_k$ one at a time is far from
+ideal due to non-existence of appropriate proposal densities. And the
+associated timing of computation is also an issue. The method proposed
+by Chib utilized a new parameterization that reproduces the exact same
+model with a set of augmented latent state variables (underlying
+regimes) $S_n=\{s_t\}_{t=1}^n\in\{1,\ldots,m+1\}^n$. Namely, the regime
+variable $s_t=k$ indicates that the generating distribution of $y_t$ is
+$f(y_t|Y_{t-1},\theta_k)$. Resembling the idea of a hidden Markov model
+(HMM), we model the state variables with a one-step ahead transition
+probability matrix
+
+\[P=\left(\begin{array}{cccccc}
+p_{11} & p_{12} & 0 & \ldots & 0 \\
+0 & p_{22} & p_{23} & \ldots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \vdots \\
+\ldots & 0 & 0 & p_{mm} & p_{m,m+1} \\
+0 & 0 & \ldots & 0 & 1 \end{array} \right),\]
+
+where $p_{ij}=\mathcal{P}(s_t=j|s_t=i)$ as in any conventional Markov
+process.
+
+    \subsection{Updating Model Parameters}\label{updating-model-parameters}
+
+In this section, we will focus on discussing how to update all the model
+parameters using the above parameterization. This consititutes the most
+important part of the algorithm. Above all, the posterior estimates
+(samples) of latent states, probability of each observation within a
+certain regime, underlying regime values and transition probablities are
+the keys to uncover a process. Second, in computing model evidence (what
+follows in the next section), these updates are also required. In this
+section, we first introduce a scan of the algorithm. Then we compared
+two versions of updates, a naive one programmed at the start of the
+project and an optimized one revised later on. A series of unit tests
+(including boundary cases) are developed to make sure that the update
+function return appropriate results, and the chain moves on well.
+
+\subsubsection{Posterior Inference for Model
+Parameters}\label{posterior-inference-for-model-parameters}
+
+With data augmentation, the posterior inference becomes tractable. We
+proceed in the following order:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Update the augmented state variables $S_n$:
+\end{itemize}
+
+Let $S_t=(s_1\ldots,s_t)$ denote the state history up to time $t$ and
+$S^{t+1}=\{s_{t+1},\ldots,s_{n}\}$ the history from time $t+1$ until the
+end, and similarly for $Y_t$ and $Y^{t+1}$. The only way shown (Chib
+1993) to derive the sampler with closed-form expressions is to write the
+joint posterior full conditional in the reverse order as:
+
+\[\prod_{t=1}^{n-1} p(s_t|Y_n,S^{t+1},\Theta,P).\]
+
+Fixing $s_n=m+1$, the sampler generates $s_t$ from
+$p(s_t|Y_n,S^{t+1},\Theta,P)$ from $t=n-1$ until $t=1$. Chib showed that
+
+\[p(s_t|Y_n,S^{t+1},\Theta,P)\propto p(s_t|Y_t,\Theta,P)p(s_{t+1}|s_t,P),\]
+
+where the first item is the univariate conditional posterior of the
+state variable at time $t$, and the last item is the transition
+probability directly available from the current update. Note that
+$p(s_t|Y_n,S^{t+1},\Theta,P)$ only have point masses on the consecutive
+pairs given the value of $s_{t+1}$, so the calculation of the
+normalization constant is straightforward. Further, given
+$p(s_{t-1}=l|Y_{t-1},\Theta,P)$,
+
+\[p(s_t=k|Y_t,\Theta,P)=\frac{p(s_t=k|Y_{t-1},\Theta,P)f(y_t|Y_{t-1},\theta_k)}{\sum_{l=1}^{m+1} p(s_t=l|Y_{t-1},\Theta,P)f(y_t|Y_{t-1},\theta_l)},\]
+
+where
+\[p(s_t=l|Y_{t-1},\Theta,P)=\sum_{l=k-1}^k p_{lk}p(s_{t-1}=l|Y_{t-1},\Theta,P),\]
+
+for $k=1,\ldots,m$. Specifically, $p(s_1=1|Y_{0},\Theta,P)=1$ is
+initiated, and a recursive calcation is performed to obtain all values
+of $p(s_t=k|Y_t,\Theta,P)$ and $p(s_t=l|Y_{t-1},\Theta,P)$. Finally, the
+backward sampling procedure is used to generate a sample of latent
+states.
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Update transition matrix $P|S_n$:
+\end{itemize}
+
+First note that there is only a single unknown parameter in each row of
+$P$, say the diagonal element $p_{ii}$. Suppose we assign conjugate
+Beta$(a,b)$ prior independently for $p_{ii}$, where $a,b$ are chosen
+according to prior belief about the mean duration of each regime. The
+full conditional is given by
+
+\[p_{ii}|\cdot \sim \text{Beta}(a+n_{ii},b+n_{i,i+1}),\qquad\qquad\forall i\in \{1,\ldots,m\},\]
+
+where $n_{ij}$ is the number of one-step transitions from state $i$ to
+state $j$ in the current sequence $S_n$.
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Update the model parameters $\Theta|Y_n,S_n,P$:
+\end{itemize}
+
+Since we are dealing with parametric models, so $\Theta$ is
+model-specific. We will present more details on derivation of the full
+conditionals in subsequent sections for specific models.
+
+\subsubsection{Code Profiling and
+Optimization}\label{code-profiling-and-optimization}
+
+An early (naive) version of the update functions and a later (optimized)
+version are contrasted. The naive version handles each update piece by
+piece, without vectorization and simultaneous updates for the
+intermediate steps. The following example uses a line profiler to
+identify the possible bottlenecks of the naive code (updating the latent
+states).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{Optimization.NaiveSourceCode} \PY{k+kn}{as} \PY{n+nn}{nsc}
+        \PY{k+kn}{import} \PY{n+nn}{Optimization.OptimizedSourceCode} \PY{k+kn}{as} \PY{n+nn}{osc}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{1234}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} Specify test data}
+        \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Data/data\PYZus{}test}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{theta\PYZus{}true} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.}\PY{p}{,} \PY{l+m+mf}{3.}\PY{p}{]}\PY{p}{)}
+        \PY{n}{n}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}
+        \PY{n}{a}\PY{p}{,} \PY{n}{b} \PY{o}{=} \PY{l+m+mf}{8.}\PY{p}{,} \PY{l+m+mf}{0.1}
+        \PY{n}{c}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{2.}\PY{p}{,} \PY{l+m+mf}{100.}
+        
+        \PY{c}{\PYZsh{} Inits \PYZhy{} parameters}
+        \PY{n}{theta} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{2.}\PY{p}{,} \PY{l+m+mf}{4.}\PY{p}{]}\PY{p}{)}
+        \PY{n}{theta\PYZus{}star} \PY{o}{=} \PY{n}{theta\PYZus{}true}
+        \PY{n}{sigma} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mf}{3.0}\PY{p}{)}
+        \PY{n}{s} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{repeat}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{0.}\PY{p}{,} \PY{l+m+mf}{1.}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{80}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+        
+        \PY{c}{\PYZsh{} Inits \PYZhy{} useful quantities                           }
+        \PY{n}{Ptran} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{n}{m} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{m} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+        \PY{n}{Ptran}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
+        \PY{k}{for} \PY{n}{j} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{m}\PY{p}{)}\PY{p}{:}
+            \PY{n}{Ptran}\PY{p}{[}\PY{n}{j}\PY{p}{,} \PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{l+m+mf}{0.875}
+            \PY{n}{Ptran}\PY{p}{[}\PY{n}{j}\PY{p}{,} \PY{n}{j}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1} \PY{o}{\PYZhy{}} \PY{n}{Ptran}\PY{p}{[}\PY{n}{j}\PY{p}{,} \PY{n}{j}\PY{p}{]}
+        \PY{n}{Ptran\PYZus{}star} \PY{o}{=} \PY{n}{Ptran}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} line\PYZus{}profiler
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c}{\PYZsh{} Suppress the Lengthy output}
+        \PY{n}{lstats} \PY{o}{=} \PY{o}{\PYZpc{}}\PY{k}{lprun} \PYZhy{}r \PYZhy{}f nsc.update\PYZus{}Sn\PYZus{}naive nsc.update\PYZus{}Sn\PYZus{}naive(y, n, m, Ptran, theta, s)
+        \PY{c}{\PYZsh{} lstats.print\PYZus{}stats()}
+\end{Verbatim}
+
+    Possible bottlenecks include line 42 (update the posterior probability
+of latent states), and line 52/53 (updating sampling pmfs). In the
+optimized code, we explored vectorization and joint update for
+intermediate steps extensively, resulting in efficiency gain. The line
+profiler is not shown to avoid lengthy output, but could be found in the
+``Optimization'' folder. Before we show the constrast in time for the
+two versions of codes, we offer several comments. First, the nature of
+the algorithm (MCMC) determines that each update depends on the previous
+one, so parallel computing would not help too much in improving
+efficiency. Second, improving each function for a certain amount will
+help saving much time since the algorithm uses eachh uopdate thousands
+of times (runs), and is indeed our focus here. Third, a possble
+extension to C code is promising, but faces the challenge of entensive
+use with known parametric sampling models. Admittedly, we will look at
+an alternative model in R, whose functions resort to ``Rcpp'', and is
+quite fast in time. But the majority of difference comes from the
+essence of the sampling procedures (will be discussed later). We feel
+confident that this optimization in Python is fast enough for Chib's
+algorithm. The time-consuming recursive(forward-backward) updates come
+as a price with the nature of this inference. We show the improved
+efficiency below for all three major update functions.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{o}{\PYZpc{}}\PY{k}{timeit} \PYZhy{}n2 \PYZhy{}r4 nsc.update\PYZus{}Sn\PYZus{}naive(y, n, m, Ptran, theta, s)
+        \PY{o}{\PYZpc{}}\PY{k}{timeit} \PYZhy{}n2 \PYZhy{}r4 osc.update\PYZus{}Sn\PYZus{}optimized(y, n, m, Ptran, theta, s)
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2 loops, best of 4: 38.9 ms per loop
+2 loops, best of 4: 26.7 ms per loop
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{o}{\PYZpc{}}\PY{k}{timeit} \PYZhy{}n2 \PYZhy{}r4 nsc.update\PYZus{}P\PYZus{}naive(a, b, n, m, s, Ptran\PYZus{}star)
+        \PY{o}{\PYZpc{}}\PY{k}{timeit} \PYZhy{}n2 \PYZhy{}r4 osc.update\PYZus{}P\PYZus{}optimized(a, b, n, m, s, Ptran\PYZus{}star)
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2 loops, best of 4: 675 µs per loop
+2 loops, best of 4: 438 µs per loop
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{nk}\PY{p}{,} \PY{n}{Ptran}\PY{p}{,} \PY{n}{f\PYZus{}Ptran\PYZus{}star} \PY{o}{=} \PY{n}{nsc}\PY{o}{.}\PY{n}{update\PYZus{}P\PYZus{}naive}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{n}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{s}\PY{p}{,} \PY{n}{Ptran\PYZus{}star}\PY{p}{)} 
+        \PY{o}{\PYZpc{}}\PY{k}{timeit} \PYZhy{}n2 \PYZhy{}r4 nsc.update\PYZus{}Theta\PYZus{}naive(c, d, m, y, s, nk, theta\PYZus{}star)
+        \PY{o}{\PYZpc{}}\PY{k}{timeit} \PYZhy{}n2 \PYZhy{}r4 osc.update\PYZus{}Theta\PYZus{}optimized(c, d, m, y, s, nk, theta\PYZus{}star)
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+2 loops, best of 4: 471 µs per loop
+2 loops, best of 4: 340 µs per loop
+    \end{Verbatim}
+
+    From the above output, we see that the optimized code shows quite a bit
+of improvement. Optimization saves one third of the original time in
+updating the latent states, almost half of the original time in updating
+the transition matrix and almost one fourth of the original time in
+updating the means for a Gaussian time series.
+
+    \subsubsection{Unit Tests for the Optimized
+Code}\label{unit-tests-for-the-optimized-code}
+
+The following paragraph is a draft of the each unit test file for our
+major functions.
+
+\begin{itemize}
+\item
+  Test for updating the latent states $s_{t}$ for each $t$:
+\item
+  For the recursive calculation of quantities (like the HMM
+  forward-backward steps), check whether the one-step ahead predictive
+  probabilities satisfy
+\end{itemize}
+
+\[\sum_{l=1}^{m+1} p(s_{t-1}=l|Y_{t-1},\Theta,P)=1\qquad\forall\quad t\in\{2,\ldots,n+1\},\]
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Further check the posterior conditional masses
+\end{itemize}
+
+\[\sum_{k=1}^{m+1} p(s_t=k|Y_t,\Theta,P)=1\qquad\forall\quad t\in\{1,\ldots,n\},\]
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Check whether the updated sequence $\{s_t\}$ is properly ordered such
+  that
+\end{itemize}
+
+\[s_{t-1} \leq s_{t}\qquad\forall~t\in \{2,\ldots,n\}\]
+
+\begin{itemize}
+\item
+  Check the error message if the input transition matrix contains a
+  negative probability entry (only for single updates).
+\item
+  Test for updating transition probability $p_{ii}$
+\item
+  assess whether each update is a valid posterior probability mass
+  between $(0,1)$;
+\item
+  assess whether the numbers of counts (for each states) fall into the
+  range exactly between $0$ and $n$, and whether they sum to $n$.
+\end{itemize}
+
+We drafted four series of tests, two for single updates and two for
+iterative updates. The single updates only look at a slice of update
+while the iterative updates examine at the end of $10$ iterations.
+Within each scenario, the two series of tests are for fitting single
+change-point model ($m=1$) and multiple change-point model ($m=2$) to
+make sure that the functions can well handle models with different
+complexity. Each series of tests contain $6$ or $5$ tests outlined
+above. We have in total $22$ tests. The following line execute the all
+tests.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{o}{!} py.test \PY{l+s+s2}{\PYZdq{}UnitTest/.\PYZdq{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+============================= test session starts ==============================
+platform linux2 -- Python 2.7.9 -- py-1.4.25 -- pytest-2.6.3
+collected 22 items 
+
+UnitTest/test\_mcmc\_sampling\_one\_ChangePoint\_iterative\_steps.py {\ldots}
+UnitTest/test\_mcmc\_sampling\_one\_ChangePoint\_single\_step.py {\ldots}
+UnitTest/test\_mcmc\_sampling\_two\_ChangePoint\_iterative\_steps.py {\ldots}
+UnitTest/test\_mcmc\_sampling\_two\_ChangePoint\_single\_step.py {\ldots}
+
+{\color{green}}========================== 22 passed in 3.14 seconds ===========================
+    \end{Verbatim}
+
+    \subsection{Computing Model Evidence}\label{computing-model-evidence}
+
+One of the interesting features of Chib's algorithm is the availability
+of model evidence, i.e., marginal likelihood (Bayes factor). The idea is
+to fit several multiple change-point models, compute their marginal
+likelihood and make decisions on which model to choose based on the
+Bayes factor. In Bayesian inference, the Bayes factor provides a
+systematic support on model selection decisions. But usually this is
+hard to compute. Direct computation involves intractable integrations.
+With MCMC output, we can make use the posterior samples and approximate
+the marginal likelihood using these outputs. We embedded this
+computation into our functions to make them available along with the
+posterior samples.
+
+\subsubsection{Approximating the Maximum Likelihood
+Coordinates}\label{approximating-the-maximum-likelihood-coordinates}
+
+Given a model with $r$ change points $M_r$, the marginal likelihood is
+
+\[m(Y_n|M_r)=\frac{f(Y_n|M_r,\Theta^{*},P^{*})\pi(\Theta^{*},P^{*}|M_r)}{\pi(\Theta^{*},P^{*}|Y_n,M_r)},\]
+
+from the Bayes' theorem. In the equation, $\psi^{*}=(\Theta^{*},P^{*})$
+is any point within the parameter space in theory. In numerical
+approximation, the best practice is to choose the coordinate close to
+the posterior mode, which prevents the approximation from numerical
+underflow. The MCMC will automatically reasonable estimates for these
+values, but to reuse this values within each iteration of the chain, we
+need to start a new MCMC, which is quite expensive in computing. The
+paper describes the procedures to make these estimates available using
+Monte Carlo Expectation Maximization (MCEM). This methods approximates
+the maximum likelihood estimates. In the E-step, $N$ samples of
+$S_n,j(j\leq N)$ are drawn from $p(S_n|Y_n,\psi^{\text{current}})$, and
+the expected log-likelihood function is computed as
+
+\[\hat{Q}(\psi)=\frac{1}{N}\sum_{j=1}^N \log\{f(Y_n,S_{n,j}|\psi)\}=\frac{1}{N}\sum_{j=1}^N \{\log f(Y_n|S_{n,j},\Theta)+\log f(S_{n,j}|P) \}.\]
+
+Clearly, this function separates the component of model parameters and
+transition matrix into two disjoint pieces. The M-step can be carried
+out via
+
+\[\hat{p}_{ii}=\frac{\sum_{j=1}^N n_{ii,j}}{\sum_{j=1}^N(n_{ii,j}+1)},\qquad i=1,\ldots,n,\]
+
+where $n_{ii,j}$ is the number of transitions from state $i$ to state
+$i$ in sample $S_{n,j}=\{s_{1,j},\ldots,s_{n,j}\}$. For the applications
+in our project (or more generally models with sample average as the
+MLE),
+
+\[\hat{\theta}_k=\frac{\sum_{j=1}^N\sum_{t=1}^n y_t\mathbb{I}(s_{t,j}=k)}{\sum_{j=1}^N\sum_{t=1}^n \mathbb{I}(s_{t,j}=k)}.\]
+
+To save the computational time, we follow the idea of the paper and set
+the Monte Carlo replicates $N$ to $1$ initially and gradually increase
+to $300$. To reduce unnecessary computational time, we claim convergence
+and stop the algorithm once (1) $N$ is increased to at least $100$ and
+(2) the difference between updates on $Q$ function does not exceed the
+pre-specified tolerance limit.
+
+\subsubsection{Approximating the Marginal Likelihood within
+MCMC}\label{approximating-the-marginal-likelihood-within-mcmc}
+
+In this section, we suppress the notation $M_r$ for simplicity. The log
+marginal likelihood can be approximated by (according to the previous
+equation from Bayes' theorem)
+\[\log\hat{m}(Y_n)=\log f(Y_n|\psi^{*})+\log\pi(\psi^{*})-\log\hat{\pi}(\Theta^{*}|Y_n)-\log\hat{\pi}(P^{*}|Y_n,\Theta^{*}).\]
+
+The first piece is simply the log-likelihood of the observations
+evaluated at $\psi^{*}$,
+\[\log f(Y_n|\psi^{*})=\sum_{t=1}^n f(y_t|Y_{t-1},\psi^{*})=\sum_{t=1}^n\sum_{k=1}^m f(y_t|Y_{t-1},\psi^{*}, s_t=k)p(s_t=k|Y_{t-1},\psi^{*}),\]
+where the first quantity in the last product term is the conditional
+density and the last quantity is simply the one-step ahead predictive
+mass for the state variables, which all can be computed at once
+(independent of MCMC).
+
+The second piece is the prior density of $\psi^{*}$. The last pieces
+make use of the additional calls in the MCMC. Suppose we run $G$
+iterations beyond the transient stage (burn-in), then the third piece
+
+\[\log\hat{\pi}(\Theta^{*}|Y_n)=\log\{G^{-1}\sum_{g=1}^G \pi(\Theta^{*}|Y_n, S_{n,g})\},\]
+
+where $\pi(\Theta^{*}|Y_n, S_{n,g})$ is just the full conditional
+density $\Theta^{*}$ in the $g$th iteration (depending on the parametric
+model). And the last piece is the log average of the product of the
+posterior Beta densities given conjugate Beta($a,b$) prior for all
+transition probabilities.
+
+\[\log\hat{\pi}(P^{*}|Y_n,\Theta^{*}=\log\{G^{-1}\sum_{j=1}^G\prod_{i=1}^m \frac{\Gamma(a+b+n_{ii,j}+1)}{\Gamma(a+n_{ii,j})\Gamma(b+1)}p_{ii}^{a+n_{ii,j}-1}(1-p_{ii})^{b+1-1}\}.\]
+
+\subsubsection{Instructions for the Created
+Module}\label{instructions-for-the-created-module}
+
+After incorporating the computation of marginal likelihood in the code,
+we compiled the source code into a module that we could use in this
+project (available in the ``SourceCode'' folder). The two major
+execution functions are ``mcem\_update'' and ``model\_fit''. We explain
+the usage of the two functions and use a simple example for crude
+illustration. The building blocks of these two execution functions are
+the three major update functions mentioned previously.
+
+The first function ``mcem\_update(y, m, family, tol)'' is for finding
+the MLE by Monte Carlo Expectation Maximization. The arguments are
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  y: a vector of observations;
+\item
+  m: pre-specified number of change points;
+\item
+  family: ``gaussian'' or ``poisson'' parametric model, currently
+  limited to the applications in our project;
+\item
+  tol: tolerance limit to claim convergence and stop the algorithm.
+\end{itemize}
+
+The function will return two arrays:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  theta: MLE of model parameters;
+\item
+  Ptran: MLE of transition probabilities.
+\end{itemize}
+
+The next function ``model\_fit(y, m, vsim, burn, theta\_star,
+Ptran\_star, c, d, family)'' fit the model for either one of the two
+parametric change point models, Gaussian or Poisson. Currently, it is
+limited to our applications. Notice that the generalization of this
+function is quite a complicated task, since the parameter updates
+completely depend on the assumption of models as well as the choice of
+priors. We made this function only to implement the described algorithm.
+The arguments of this function are
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  y: a vector of observations;
+\item
+  m: pre-specified number of change points;
+\item
+  vsim: number of simulations in total;
+\item
+  burn: length of burn-in period / transient stage;
+\item
+  theta\_star: MLE of model parameters;
+\item
+  Ptran\_star: MLE of transition probabilities;
+\item
+  c,d - prior gamma parameters (shape, scale) or prior normal parameters
+  (mean, scale);
+\item
+  family - ``gaussian'' or ``poisson'' parametric model, currently
+  limited to the applications in our project.
+\end{itemize}
+
+The function returns six objects:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Tau\_p: (vsim * m) array, posterior samples of m change points;
+\item
+  Theta\_p: (vsim * (m+1)) array, posterior samples of model regime
+  parameters;
+\item
+  F\_lag\_sum, F\_sum: posterior cumulative sums of marginal probs for
+  latent states (need to average across simulations);
+\item
+  log\_f\_y: maximized log-likelihood for a given model;
+\item
+  log\_m: marginal likelihood for a given model.
+\end{itemize}
+
+As a brief illustration, we use the two functions to fit the previously
+loaded Gaussian time series data. The Gaussian time series is simulated
+such that the change point occurs at $t=50$. The two Gaussian means are
+$1$ and $3$ respectively. The following plot shows the dynamics of the
+time series.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k+kn}{from} \PY{n+nn}{SourceCode.ChangePointModelSourceCode} \PY{k+kn}{import} \PY{o}{*}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{n} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}b}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth} \PY{o}{=} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZdl{}Y\PYZus{}t\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{151}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Example \PYZhy{} Gaussian}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}11}]:} <matplotlib.text.Text at 0x7feb0a766610>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_17_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{theta\PYZus{}star\PYZus{}1}\PY{p}{,} \PY{n}{Ptran\PYZus{}star\PYZus{}1} \PY{o}{=} \PY{n}{mcem\PYZus{}update}\PY{p}{(}\PY{n}{y} \PY{o}{=} \PY{n}{y}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{gaussian}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{tol} \PY{o}{=} \PY{l+m+mf}{0.01}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Convergence Reached
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{Tau\PYZus{}p\PYZus{}1}\PY{p}{,} \PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{,} \PY{n}{F\PYZus{}lag\PYZus{}sum\PYZus{}1}\PY{p}{,} \PY{n}{F\PYZus{}sum\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}1} \PY{o}{=} \PYZbs{}
+             \PY{n}{model\PYZus{}fit}\PY{p}{(}\PY{n}{y} \PY{o}{=} \PY{n}{y}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{vsim} \PY{o}{=} \PY{l+m+mi}{3000}\PY{p}{,} \PY{n}{burn} \PY{o}{=} \PY{l+m+mi}{1000}\PY{p}{,} \PY{n}{theta\PYZus{}star} \PY{o}{=} \PY{n}{theta\PYZus{}star\PYZus{}1}\PY{p}{,} \PYZbs{}
+                       \PY{n}{Ptran\PYZus{}star} \PY{o}{=} \PY{n}{Ptran\PYZus{}star\PYZus{}1}\PY{p}{,} \PY{n}{c} \PY{o}{=} \PY{l+m+mf}{2.}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{100.}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{gaussian}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Posterior Sampling Finished Successfully.
+    \end{Verbatim}
+
+    First we observe that the MLE is quite close to the posterior means.
+Then we can extrapolate the most likely change point from the posterior
+samples as well. Further, one can easily obtain the maximized likelihood
+as well as the marginal likelihood.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{MLE}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{theta\PYZus{}star\PYZus{}1}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+MLE [ 1.1819  3.1157]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Means}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{l+m+mi}{1000}\PY{p}{:}\PY{p}{,}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{axis} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Posterior Means [ 1.1857  3.1189]
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{The posterior estimates for the change point is at time }\PY{l+s}{\PYZpc{}}\PY{l+s}{.d.}\PY{l+s}{\PYZdq{}}  \PYZbs{}
+             \PY{o}{\PYZpc{}}\PY{p}{(}\PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{l+m+mi}{1000}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The posterior estimates for the change point is at time 53.
+    \end{Verbatim}
+
+    \subsection{Illustrative Example with Simulated Gaussian Time
+Series}\label{illustrative-example-with-simulated-gaussian-time-series}
+
+In this illustrative example, we examined the performance of the
+algorithm in greater details. A Gaussian time series was simulated with
+two change points, located at time $50$ and $100$. The three distinct
+means are $1,3$ and $5$. The following plot helps visualize the time
+series. From the plot, we can sense the increasing values across time,
+however, it is hard to determine exactly where the change points are
+located from a first look.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Data/data\PYZus{}gaussian}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{n} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+         \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{1234}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{n}{n}\PY{p}{)} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZhy{}c}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{linewidth} \PY{o}{=} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{\PYZdl{}Y\PYZus{}t\PYZdl{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{151}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Gaussian Observations}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}17}]:} <matplotlib.text.Text at 0x7feb0a131710>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_25_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Model Comparisons}\label{model-comparisons}
+
+Below we fit three models $M_1$, $M_2$ and $M_3$, indexing models with
+$1$ to $3$ change points. All models initialize the MLE using MCEM and
+carried the MLEs in computing the marginal likelihood via MCMC.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{c}{\PYZsh{} MCEM}
+         \PY{n}{n}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}
+         \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star} \PY{o}{=} \PY{n}{mcem\PYZus{}update}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{gaussian}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{tol} \PY{o}{=} \PY{l+m+mf}{0.01}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Convergence Reached
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c}{\PYZsh{} MCMC}
+         \PY{n}{vsim}\PY{p}{,} \PY{n}{burn} \PY{o}{=} \PY{l+m+mi}{7000}\PY{p}{,} \PY{l+m+mi}{1000}
+         \PY{n}{c}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{2.}\PY{p}{,} \PY{l+m+mf}{100.}
+         \PY{n}{Tau\PYZus{}p\PYZus{}1}\PY{p}{,} \PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{,} \PY{n}{F\PYZus{}lag\PYZus{}sum\PYZus{}1}\PY{p}{,} \PY{n}{F\PYZus{}sum\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}1} \PY{o}{=}  \PYZbs{}
+             \PY{n}{model\PYZus{}fit}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{vsim}\PY{p}{,} \PY{n}{burn}\PY{p}{,} \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{gaussian}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Posterior Sampling Finished Successfully.
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c}{\PYZsh{} MCEM}
+         \PY{n}{n}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{2}
+         \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star} \PY{o}{=} \PY{n}{mcem\PYZus{}update}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{gaussian}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{tol} \PY{o}{=} \PY{l+m+mf}{0.01}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Convergence Reached
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{c}{\PYZsh{} MCMC}
+         \PY{n}{vsim}\PY{p}{,} \PY{n}{burn} \PY{o}{=} \PY{l+m+mi}{7000}\PY{p}{,} \PY{l+m+mi}{1000}
+         \PY{n}{c}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{2.}\PY{p}{,} \PY{l+m+mf}{100.}
+         \PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{,} \PY{n}{Theta\PYZus{}p\PYZus{}2}\PY{p}{,} \PY{n}{F\PYZus{}lag\PYZus{}sum\PYZus{}2}\PY{p}{,} \PY{n}{F\PYZus{}sum\PYZus{}2}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}2}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}2} \PY{o}{=}  \PYZbs{}
+             \PY{n}{model\PYZus{}fit}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{vsim}\PY{p}{,} \PY{n}{burn}\PY{p}{,} \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{gaussian}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Posterior Sampling Finished Successfully.
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{c}{\PYZsh{} MCEM}
+         \PY{n}{n}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{3}
+         \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star} \PY{o}{=} \PY{n}{mcem\PYZus{}update}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{gaussian}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{tol} \PY{o}{=} \PY{l+m+mf}{0.01}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Convergence Reached
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{c}{\PYZsh{} MCMC}
+         \PY{n}{vsim}\PY{p}{,} \PY{n}{burn} \PY{o}{=} \PY{l+m+mi}{7000}\PY{p}{,} \PY{l+m+mi}{1000}
+         \PY{n}{c}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{2.}\PY{p}{,} \PY{l+m+mf}{100.}
+         \PY{n}{Tau\PYZus{}p\PYZus{}3}\PY{p}{,} \PY{n}{Theta\PYZus{}p\PYZus{}3}\PY{p}{,} \PY{n}{F\PYZus{}lag\PYZus{}sum\PYZus{}3}\PY{p}{,} \PY{n}{F\PYZus{}sum\PYZus{}3}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}3}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}3} \PY{o}{=}  \PYZbs{}
+             \PY{n}{model\PYZus{}fit}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{vsim}\PY{p}{,} \PY{n}{burn}\PY{p}{,} \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{gaussian}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Posterior Sampling Finished Successfully.
+    \end{Verbatim}
+
+    Following the idea of the paper, we plotted the averaged marginal
+posterior density for the regimes of each observation from $M_1$ to
+$M_3$. We clearly see that $M_1$ and $M_3$ make ambiguous regime
+membership for quite a lot of time periods, and the change points are
+unclear. Among them, $M_2$ seemed to have better fit and claimed clear
+regime membership. We could infer that the first change point occurred
+at round time $50$ to $55$ while the second one at around time $100$.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c}{\PYZsh{} Visualize change point for all models}
+         \PY{n}{time} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{16}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{PrS} \PY{o}{=} \PY{n}{F\PYZus{}sum\PYZus{}1} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{red}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{151}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{l+m+mf}{1.01}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(S\PYZus{}t|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{PrS} \PY{o}{=} \PY{n}{F\PYZus{}sum\PYZus{}2} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{red}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{151}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{l+m+mf}{1.01}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(S\PYZus{}t|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{PrS} \PY{o}{=} \PY{n}{F\PYZus{}sum\PYZus{}3} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{red}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 4}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{orange}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{151}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{l+m+mf}{1.01}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(S\PYZus{}t|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}3\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}24}]:} <matplotlib.text.Text at 0x7feb09ef9290>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_34_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    Formal inference on model selection are determined by Bayes factor,
+which is defined as:
+
+\[BF_{rs}=\frac{m(Y_n|M_r)}{m(Y_n|M_s)}.\]
+
+We summarized all the model evidence in the following table. The Bayes
+factor $B_{21}\approx 222$ and $B_{23}\approx 156$, providing strong
+evidence in favor of $M_2$. This conclusion also agrees with the values
+of the maximized log-likelihood.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{table\PYZus{}gaussian} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}2}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}3}\PY{p}{,} \PYZbs{}
+                                    \PY{n}{log\PYZus{}m\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}2}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}3}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{rownames} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}3\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{colnames} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{log f(Y\PYZus{}n|}\PY{l+s}{\PYZbs{}}\PY{l+s}{phi\PYZca{}\PYZob{}*\PYZcb{})\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{log m(Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{around}\PY{p}{(}\PY{n}{table\PYZus{}gaussian}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{n}{colnames}\PY{p}{,} \PY{n}{rownames}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:}                           \$M\_1\$    \$M\_2\$    \$M\_3\$
+         \$\textbackslash{}log f(Y\_n|\textbackslash{}phi\^{}\{*\})\$ -319.900 -308.535 -314.983
+         \$\textbackslash{}log m(Y\_n)\$          -327.682 -322.500 -327.661
+\end{Verbatim}
+        
+    Next we make formal inference on the locations of the two change points.
+The following plot presents the posterior probability of locations of
+both change points. We see that the highest probabilities are at time
+$53$ and $100$, very close to the true values.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{c}{\PYZsh{} Estimation of Change Points}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{n}{n}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{151}\PY{p}{)}\PY{p}{,} \PY{n}{normed} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{n}{n}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{151}\PY{p}{)}\PY{p}{,} \PY{n}{normed} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Probability of Change Points in \PYZdl{}M\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{The posterior estimates for change points }\PY{l+s+se}{\PYZbs{}n}\PY{l+s}{ are at time }\PY{l+s}{\PYZpc{}}\PY{l+s}{.d (with prob }\PY{l+s+si}{\PYZpc{}.3f}\PY{l+s}{) and }\PY{l+s}{\PYZpc{}}\PY{l+s}{.d (with prob }\PY{l+s+si}{\PYZpc{}.3f}\PY{l+s}{)}\PY{l+s}{\PYZdq{}}  \PYZbs{}
+             \PY{o}{\PYZpc{}}\PY{p}{(}\PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PYZbs{}
+               \PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}\PY{p}{,}  \PYZbs{}
+               \PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PYZbs{}
+               \PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The posterior estimates for change points 
+ are at time 53 (with prob 0.180) and 100 (with prob 0.534)
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_38_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    It is worth pointing out that the chains for model parameters have good
+mixing properties only in the correct model $M_2$. In either $M_1$ and
+$M_3$, these chains are quite ``sticky'', indicating insufficient
+exploration of the posterior parameter space. This is a direct
+consequence of model misspecification.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{c}{\PYZsh{} MCMC diagnostics \PYZhy{} Correct model}
+         \PY{n}{m} \PY{o}{=} \PY{l+m+mi}{2}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{m} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{Theta\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{;}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Trace for \PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu\PYZdl{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_40_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{c}{\PYZsh{} MCMC diagnostics \PYZhy{} Incorrect model, quite \PYZsq{}sticky\PYZsq{}}
+         \PY{n}{m} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{m} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{;}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Trace for \PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu\PYZdl{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_41_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    In addition, we can use the model output to approximate the posterior
+densities of different regimes. The next plot overlays the posterior
+density with the flat (non-informative) prior density for each regime.
+The posterior means and standard deviations are summarized after the
+plot. We observe that the parameter estimates are almost equal to the
+truth with great precision (small standard deviation).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{c}{\PYZsh{} density plots }
+         \PY{n}{m} \PY{o}{=} \PY{l+m+mi}{2}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{15}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{m} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+             \PY{n}{density} \PY{o}{=} \PY{n}{stats}\PY{o}{.}\PY{n}{gaussian\PYZus{}kde}\PY{p}{(}\PY{n}{Theta\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+             \PY{n}{xs} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{800}\PY{p}{)}
+             \PY{n}{density}\PY{o}{.}\PY{n}{covariance\PYZus{}factor} \PY{o}{=} \PY{k}{lambda} \PY{p}{:} \PY{o}{.}\PY{l+m+mi}{5}
+             \PY{n}{density}\PY{o}{.}\PY{n}{\PYZus{}compute\PYZus{}covariance}\PY{p}{(}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xs}\PY{p}{,}\PY{n}{density}\PY{p}{(}\PY{n}{xs}\PY{p}{)}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{b}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{posterior}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xs}\PY{p}{,} \PY{n}{stats}\PY{o}{.}\PY{n}{norm}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{xs}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d}\PY{p}{)}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{g\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{prior}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Posterior (Prior) Density for \PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu\PYZdl{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_43_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{table\PYZus{}estimate} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{concatenate}\PY{p}{(}\PY{p}{(}\PY{n}{Theta\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{axis} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,} \PYZbs{}
+                                          \PY{n}{Theta\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{p}{]}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{axis} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{rownames} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{mu\PYZus{}3\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{colnames} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Mean}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Standard Deviation}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{around}\PY{p}{(}\PY{n}{table\PYZus{}estimate}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{n}{colnames}\PY{p}{,} \PY{n}{rownames}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}40}]:}                               \$\textbackslash{}mu\_1\$  \$\textbackslash{}mu\_2\$  \$\textbackslash{}mu\_3\$
+         Posterior Mean                  1.177    3.051    5.175
+         Posterior Standard Deviation    0.249    0.266    0.255
+\end{Verbatim}
+        
+    \subsubsection{Alternative Algorithms}\label{alternative-algorithms}
+
+We discuss two alternative algorithms available in R. The first one is
+by Barry and Hartigan (1993), who used product partition distributions
+to model the stochastic process. The second one is a nonparametric model
+by Matteson and James (2013), whose method relies on a divergence
+measure of change in distributions.
+
+\paragraph{Barry and Hartigan (1993) - Product Partition
+Distributions}\label{barry-and-hartigan-1993---product-partition-distributions}
+
+We use the R package ``bcp'', which approximated the product partition
+distribution method only for the Gaussian case (by the reference pages).
+Unique to the algorithm, it does not return specific number of change
+points and where they occur. Instead, it models each observation
+uniquely with different means. In order to make valid comparisons with
+Chib's method, we need to make inference based on the output evidence.
+The first plot shows the posterior means against time and their
+probabilities of a change occurring. We can see three distinct regimes
+with two jumping regions.
+
+Based on the two points with the highest probability of a change, we get
+the two change points to be at time $53$ and $100$, with probabilities
+$17.3\%$ and $51.4\%$, almost identical to the results from Chib's
+method. We then average the posterior means for each regime and found
+results close to both Chib's result and the tru values. Since we are
+clustering the points into two regimes, there are two versions to
+compute the posterior standard deviations, Monte Carlo (based on
+posterior samples) and model averaged (based on output posterior
+variances). We found that the model averaged one is close to Chib's
+method.
+
+However, we should notice that this algorithm does not make final claims
+on how many change points and where they should be. Nor any model
+evidence is available from the output. But it indeed has flexibility in
+modeling for each single observations simultaneouly.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} rpy2.ipython
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The rpy2.ipython extension is already loaded. To reload it, use:
+  \%reload\_ext rpy2.ipython
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{k+kn}{from} \PY{n+nn}{rpy2.robjects.packages} \PY{k+kn}{import} \PY{n}{importr}
+         \PY{n}{utils} \PY{o}{=} \PY{n}{importr}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{utils}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{c}{\PYZsh{} utils.install\PYZus{}packages(\PYZsq{}bcp\PYZsq{})}
+         \PY{c}{\PYZsh{} utils.install\PYZus{}packages(\PYZsq{}ecp\PYZsq{})}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         library(bcp)
+         set.seed(1234)
+         fit = bcp(c(y), burnin = 1000, mcmc = 6000, return.mcmc = TRUE)
+         plot(fit)
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_48_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         time = order(fit\PYZdl{}posterior.prob, decreasing = TRUE)[c(2,1)]
+         pmeans = fit\PYZdl{}posterior.mean
+         pprob = fit\PYZdl{}posterior.prob
+         psamples = fit\PYZdl{}mcmc.means[,\PYZhy{}(1:1000)]
+         sd1 = sd(psamples[1:time[1], ])
+         sd2 = sd(psamples[(time[1]+1):time[2], ])
+         sd3 = sd(psamples[\PYZhy{}(1:time[2]), ])
+         pstd = sqrt(fit\PYZdl{}posterior.var)
+         
+         cat(\PYZdq{}The estimated change points are at time\PYZdq{}, time, 
+             \PYZdq{}, with probabilities\PYZdq{}, round(pprob[time], 3), \PYZsq{}\PYZbs{}n\PYZsq{})
+         cat(\PYZdq{}The posterior means for the three periods are\PYZdq{}, 
+             round(c(mean(pmeans[1:time[1]]), mean(pmeans[(time[1]+1):time[2]]), 
+                     mean(pmeans[\PYZhy{}(1:time[2])])), 3), \PYZsq{}\PYZbs{}n\PYZsq{})
+         cat(\PYZdq{}The posterior standard deviations for the three periods are (Monte Carlo)\PYZdq{}, 
+             round(c(sd1, sd2, sd3), 3), \PYZsq{}\PYZbs{}n\PYZsq{})
+         cat(\PYZdq{}The posterior standard deviations for the three periods are (Model Averaged)\PYZdq{}, 
+             round(c(mean(pstd[1:time[1]]), mean(pstd[(time[1]+1):time[2]]), 
+                     mean(pstd[\PYZhy{}(1:time[2])])), 3), \PYZsq{}\PYZbs{}n\PYZsq{})
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+The estimated change points are at time 53 100 , with probabilities 0.173 0.514 
+The posterior means for the three periods are 1.314 3.042 5.066 
+The posterior standard deviations for the three periods are (Monte Carlo) 0.318 0.366 0.319 
+The posterior standard deviations for the three periods are (Model Averaged) 0.197 0.256 0.25 
+
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         plot(1:length(y), y, col = \PYZdq{}darkgray\PYZdq{}, type = \PYZsq{}l\PYZsq{}, lwd = 2, ylim = c(\PYZhy{}4, 10), xlab = \PYZdq{}Time\PYZdq{}, 
+              ylab = expression(Y[t]), main = \PYZdq{}Product Partition Estimation of Change Points\PYZdq{})
+         lines(1:length(y), c(fitted(fit)), type = \PYZsq{}p\PYZsq{}, col = \PYZdq{}blue\PYZdq{}, lwd = 2)
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_50_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{Matteson and James (2013) - Nonparametric Multiple
+Change-point
+Analysis}\label{matteson-and-james-2013---nonparametric-multiple-change-point-analysis}
+
+Next we make use of an up-to-date nonparametric method developed by
+Matteson and James (2013). This method makes no parametric assumption
+and is not subject to the underlying data generating model. Permutation
+approaches are used to obtain evidence in claiming significant locations
+of change points. That is to say, this is a rather classical/frequentist
+method, compared to the previous two Bayesian techniques. The method
+uses a divergence metric to detect change in regimes, which could also
+somewhat arbitrary (since lots of other choices are available).
+
+We again found the same results as before in terms of the locations of
+the two change points. These are significant locations subject to
+permutational distributions. The final claims are made based on an old
+friend, the ``p-values''. We visualize the change point locations in the
+following plot.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         library(ecp)
+         set.seed(1234)
+         fit = e.divisive(matrix(y, length(y), 1), R = 499)
+         cat(\PYZdq{}The number of change points found is\PYZdq{}, fit\PYZdl{}k.hat\PYZhy{}1, 
+             \PYZdq{}, and they are at time\PYZdq{}, head(fit\PYZdl{}estimates[\PYZhy{}1], \PYZhy{}1) \PYZhy{} 1, \PYZsq{}\PYZbs{}n\PYZsq{})
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+The number of change points found is 2 , and they are at time 53 100 
+
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         state = fit\PYZdl{}cluster
+         time = cumsum(c(sum(state == 1), sum(state == 2), sum(state == 3)))
+         plot(1:time[1], y[state == 1], type = \PYZsq{}l\PYZsq{}, col = \PYZdq{}red\PYZdq{}, lwd = 2, 
+              xlim = c(1, length(state)), 
+              ylim = c(\PYZhy{}4, 10), xlab = \PYZdq{}Time\PYZdq{}, ylab = expression(Y[t]), 
+              main = \PYZdq{}Nonparametric Estimation of Change Points\PYZdq{})
+         abline(v = time[1], lwd = 2, lty = 2, col = \PYZdq{}darkgray\PYZdq{})
+         lines((time[1] + 1):time[2], y[state == 2], type =\PYZsq{}l\PYZsq{}, lwd = 2, col = \PYZdq{}blue\PYZdq{})
+         abline(v = time[2], lwd = 2, lty = 2, col = \PYZdq{}darkgray\PYZdq{})
+         lines((time[2] + 1):time[3], y[state == 3], type =\PYZsq{}l\PYZsq{}, lwd = 2, col = \PYZdq{}green\PYZdq{})
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_53_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Analysis of Coal-mining Disasters
+Data}\label{analysis-of-coal-mining-disasters-data}
+
+We now applied Chib's method to a real data set. This data is the much
+analyzed data containing the number of coal-mining disasters by year in
+Britain from $1851$ to $1962$ (Jarrett, 1979). The idea is model the
+underlying generating distribution as Poisson and detect possible change
+points. This data set is also analyzed by Chib and many others. We
+consider analyzing the data set to (1) confirm we can get similar
+results to Chib's application and (2) as a further demonstration of the
+method for non-Gaussian discrete distributions.
+
+By a first look, it is hard to infer the number of change points and
+their locations (the following barplot). We fit three models $M_0$,
+$M_1$ and $M_2$, corresponding to no change point, a single change point
+and two change points and compute their model evidence. Similar to the
+Gaussian case, the MLE for each model is computed by MCEM, and the MCMC
+is run for $7000$ iterations with the first $1000$ as burn-in. Suppose
+we use the conjugate Gamma($c, d$) prior for the Poisson mean, the
+marginal likelihood for $M_0$ can be derived as
+
+\[m(Y_n|M_0)=\frac{1}{\prod_{t=1}^n y_t!}\frac{d^c}{(n+d)^{c+\sum_{t=1}^n y_t}}\frac{\Gamma(c+\sum_{t=1}^n y_t)}{\Gamma(c)}.\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{n}{y} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Data/data\PYZus{}poisson}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{n} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+         \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{1234}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{7}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{bar}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{112}\PY{p}{)}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Time}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{y\PYZus{}t}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Coal\PYZhy{}mining disasters in Britain by year}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}48}]:} <matplotlib.text.Text at 0x7feb03720610>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_55_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Model Fitting and
+Comparisons}\label{model-fitting-and-comparisons}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{c}{\PYZsh{} M\PYZus{}0}
+         \PY{k+kn}{from} \PY{n+nn}{math} \PY{k+kn}{import} \PY{n}{lgamma}\PY{p}{,} \PY{n}{factorial}
+         \PY{n}{n}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{0}
+         \PY{n}{c}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{1.0}
+         \PY{n}{y\PYZus{}bar} \PY{o}{=} \PY{n}{y}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+         \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}0} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{stats}\PY{o}{.}\PY{n}{poisson}\PY{o}{.}\PY{n}{logpmf}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{mu} \PY{o}{=} \PY{n}{y\PYZus{}bar}\PY{p}{)}\PY{p}{)}
+         \PY{n}{log\PYZus{}m\PYZus{}0} \PY{o}{=} \PY{n}{c}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{n}{d}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{p}{(}\PY{n}{c} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{n}{n} \PY{o}{+} \PY{n}{d}\PY{p}{)} \PYZbs{}
+             \PY{o}{\PYZhy{}} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{log}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{vectorize}\PY{p}{(}\PY{n}{factorial}\PY{p}{)}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)}\PY{p}{)} \PY{o}{+}  \PYZbs{}
+             \PY{n}{lgamma}\PY{p}{(}\PY{n}{c} \PY{o}{+} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{lgamma}\PY{p}{(}\PY{n}{c}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{c}{\PYZsh{} MCEM}
+         \PY{n}{n}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{1}
+         \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star} \PY{o}{=} \PY{n}{mcem\PYZus{}update}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{poisson}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{tol} \PY{o}{=} \PY{l+m+mf}{0.01}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Convergence Reached
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{c}{\PYZsh{} MCMC}
+         \PY{n}{vsim}\PY{p}{,} \PY{n}{burn} \PY{o}{=} \PY{l+m+mi}{7000}\PY{p}{,} \PY{l+m+mi}{1000}
+         \PY{n}{c}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{2.}\PY{p}{,} \PY{l+m+mf}{1.}
+         \PY{n}{Tau\PYZus{}p\PYZus{}1}\PY{p}{,} \PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{,} \PY{n}{F\PYZus{}lag\PYZus{}sum\PYZus{}1}\PY{p}{,} \PY{n}{F\PYZus{}sum\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}1} \PY{o}{=}  \PYZbs{}
+             \PY{n}{model\PYZus{}fit}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{vsim}\PY{p}{,} \PY{n}{burn}\PY{p}{,} \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{poisson}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Posterior Sampling Finished Successfully.
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{c}{\PYZsh{} MCEM}
+         \PY{n}{n}\PY{p}{,} \PY{n}{m} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{2}
+         \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star} \PY{o}{=} \PY{n}{mcem\PYZus{}update}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{poisson}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{tol} \PY{o}{=} \PY{l+m+mf}{0.01}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Convergence Reached
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{c}{\PYZsh{} MCMC}
+         \PY{n}{vsim}\PY{p}{,} \PY{n}{burn} \PY{o}{=} \PY{l+m+mi}{7000}\PY{p}{,} \PY{l+m+mi}{1000}
+         \PY{n}{c}\PY{p}{,} \PY{n}{d} \PY{o}{=} \PY{l+m+mf}{3.}\PY{p}{,} \PY{l+m+mf}{1.}
+         \PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{,} \PY{n}{Theta\PYZus{}p\PYZus{}2}\PY{p}{,} \PY{n}{F\PYZus{}lag\PYZus{}sum\PYZus{}2}\PY{p}{,} \PY{n}{F\PYZus{}sum\PYZus{}2}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}2}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}2} \PY{o}{=}  \PYZbs{}
+             \PY{n}{model\PYZus{}fit}\PY{p}{(}\PY{n}{y}\PY{p}{,} \PY{n}{m}\PY{p}{,} \PY{n}{vsim}\PY{p}{,} \PY{n}{burn}\PY{p}{,} \PY{n}{theta\PYZus{}star}\PY{p}{,} \PY{n}{Ptran\PYZus{}star}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{d}\PY{p}{,} \PY{n}{family} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{poisson}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Posterior Sampling Finished Successfully.
+    \end{Verbatim}
+
+    In the following code, we plotted the averaged marginal posterior
+density for the regimes of each observation in $M1$ and $M2$. We are
+able to see that $M_1$ has more reasonable separation of two regimes and
+the change seemed happen at time $40$ to $45$.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{c}{\PYZsh{} Visualize change point for all models}
+         \PY{n}{time} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{11}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{PrS} \PY{o}{=} \PY{n}{F\PYZus{}sum\PYZus{}1} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{red}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{113}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{l+m+mf}{1.01}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(S\PYZus{}t|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{PrS} \PY{o}{=} \PY{n}{F\PYZus{}sum\PYZus{}2} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 1}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{red}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 2}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{time}\PY{p}{,} \PY{n}{PrS}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{o\PYZhy{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}S\PYZus{}t\PYZdl{} = 3}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PYZbs{}
+                  \PY{n}{markerfacecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{none}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{markeredgecolor} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{green}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlim}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{113}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylim}\PY{p}{(}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.01}\PY{p}{,} \PY{l+m+mf}{1.01}\PY{p}{]}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(S\PYZus{}t|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}54}]:} <matplotlib.text.Text at 0x7feb03a91f50>
+\end{Verbatim}
+        
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_63_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We then infer the exact location of possible change points. If $M_1$ is
+the correct model ,then the change point is most likely to be at time
+$41$, and if $M_2$ is the correct one, then the change point most likely
+lies at time $36$ and $41$. By further looking at the Bayes factors, we
+are able to compute that
+
+\[BF_{12}\approx 10,\qquad\qquad BF_{10}\approx 1.21\times 10^{12},\]
+
+providing moderate and substantially strong evidence in preference of
+$M_1$ over $M_2$ and $M_0$. Following Chib's reasoning, $M_1$ is the
+appropriate model and the change point is most likely to occur at time
+$t=41$ (confirming Chib's exact same result, and the same conclusion
+with the results given by Carlin, 1992).
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{c}{\PYZsh{} Estimation of Change Points M\PYZus{}1}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{7}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{n}{n}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{113}\PY{p}{)}\PY{p}{,} \PYZbs{}
+                  \PY{n}{normed} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{color} \PY{o}{=} \PY{l+s}{\PYZsq{}}\PY{l+s}{green}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Probability of Change Points in \PYZdl{}M\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{The posterior estimate for the change point is at time }\PY{l+s}{\PYZpc{}}\PY{l+s}{.d (with prob }\PY{l+s+si}{\PYZpc{}.3f}\PY{l+s}{).}\PY{l+s}{\PYZdq{}}  \PYZbs{}
+             \PY{o}{\PYZpc{}}\PY{p}{(}\PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PYZbs{}
+               \PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The posterior estimate for the change point is at time 41 (with prob 0.238).
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_65_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}56}]:} \PY{c}{\PYZsh{} Estimation of Change Points M\PYZus{}2}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{n}{n}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{113}\PY{p}{)}\PY{p}{,} \PYZbs{}
+                  \PY{n}{normed} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Probability of \PYZdl{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau\PYZus{}1\PYZdl{} in \PYZdl{}M\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{hist}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{n}{bins} \PY{o}{=} \PY{n}{n}\PY{p}{,} \PY{n+nb}{range} \PY{o}{=} \PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{113}\PY{p}{)}\PY{p}{,} \PYZbs{}
+                  \PY{n}{normed} \PY{o}{=} \PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{n}{color} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{blue}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Time}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}Pr(}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau|Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Probability of \PYZdl{}}\PY{l+s+se}{\PYZbs{}\PYZbs{}}\PY{l+s}{tau\PYZus{}2\PYZdl{} in \PYZdl{}M\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+         \PY{k}{print} \PY{l+s}{\PYZdq{}}\PY{l+s}{The estimates for change points are at time }\PY{l+s}{\PYZpc{}}\PY{l+s}{.d (with prob }\PY{l+s+si}{\PYZpc{}.3f}\PY{l+s}{) and }\PY{l+s}{\PYZpc{}}\PY{l+s}{.d (with prob }\PY{l+s+si}{\PYZpc{}.3f}\PY{l+s}{)}\PY{l+s}{\PYZdq{}}  \PYZbs{}
+             \PY{o}{\PYZpc{}}\PY{p}{(}\PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PYZbs{}
+               \PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}\PY{p}{,}  \PYZbs{}
+               \PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PYZbs{}
+               \PY{n}{stats}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{n}{Tau\PYZus{}p\PYZus{}2}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{/} \PY{n+nb}{float}\PY{p}{(}\PY{n}{vsim} \PY{o}{\PYZhy{}} \PY{n}{burn}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+The estimates for change points are at time 36 (with prob 0.096) and 41 (with prob 0.149)
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_66_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}57}]:} \PY{n}{table\PYZus{}poisson} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}0}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}f\PYZus{}y\PYZus{}2}\PY{p}{,} \PYZbs{}
+                                   \PY{n}{log\PYZus{}m\PYZus{}0}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}1}\PY{p}{,} \PY{n}{log\PYZus{}m\PYZus{}2}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{)}
+         \PY{n}{rownames} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}0\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}M\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{colnames} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{log f(Y\PYZus{}n|}\PY{l+s}{\PYZbs{}}\PY{l+s}{phi\PYZca{}\PYZob{}*\PYZcb{})\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{log m(Y\PYZus{}n)\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{around}\PY{p}{(}\PY{n}{table\PYZus{}poisson}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{n}{colnames}\PY{p}{,} \PY{n}{rownames}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}57}]:}                           \$M\_0\$    \$M\_1\$    \$M\_2\$
+         \$\textbackslash{}log f(Y\_n|\textbackslash{}phi\^{}\{*\})\$ -203.858 -176.903 -179.035
+         \$\textbackslash{}log m(Y\_n)\$          -206.207 -178.381 -180.636
+\end{Verbatim}
+        
+    Again, simlar to the simulation study, we are able to show good
+convergence of the chains, provide the posterior density plots,
+estimates and precision using the model output.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}58}]:} \PY{c}{\PYZsh{} MCMC diagnostics}
+         \PY{n}{m} \PY{o}{=} \PY{l+m+mi}{1}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{m} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{;}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Trace for \PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{lambda\PYZdl{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_69_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}59}]:} \PY{c}{\PYZsh{} density plots (reproduce the paper output)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
+         \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{m} \PY{o}{+} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{subplot}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}
+             \PY{n}{density} \PY{o}{=} \PY{n}{stats}\PY{o}{.}\PY{n}{gaussian\PYZus{}kde}\PY{p}{(}\PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{n}{i}\PY{p}{]}\PY{p}{)}
+             \PY{n}{xs} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{500}\PY{p}{)}
+             \PY{n}{density}\PY{o}{.}\PY{n}{covariance\PYZus{}factor} \PY{o}{=} \PY{k}{lambda} \PY{p}{:} \PY{o}{.}\PY{l+m+mi}{25}
+             \PY{n}{density}\PY{o}{.}\PY{n}{\PYZus{}compute\PYZus{}covariance}\PY{p}{(}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xs}\PY{p}{,}\PY{n}{density}\PY{p}{(}\PY{n}{xs}\PY{p}{)}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{b}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{posterior}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{xs}\PY{p}{,} \PY{n}{stats}\PY{o}{.}\PY{n}{gamma}\PY{o}{.}\PY{n}{pdf}\PY{p}{(}\PY{n}{xs}\PY{p}{,} \PY{n}{c}\PY{p}{,} \PY{n}{scale} \PY{o}{=} \PY{l+m+mf}{1.0}\PY{o}{/}\PY{n}{d}\PY{p}{)}\PY{p}{,} \PY{l+s}{\PYZsq{}}\PY{l+s}{g\PYZhy{}\PYZhy{}}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{label} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{prior}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc} \PY{o}{=} \PY{l+s}{\PYZdq{}}\PY{l+s}{best}\PY{l+s}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Posterior (Prior) Density for \PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{lambda\PYZdl{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s}{\PYZsq{}} \PY{o}{\PYZpc{}} \PY{p}{(}\PY{n}{i}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_70_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    In the coal-mining data set, we are able to conclude that there exists
+one major change point, occuring at year $1891$. The number of disasters
+can be modelled via a Poisson distribution with mean around $3$ from
+year $1851$ to $1891$. After $1891$, the number of disasters are notably
+reduced, and approximated followed a Poisson distribution with mean
+close to $1$.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}60}]:} \PY{n}{table\PYZus{}estimate} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{concatenate}\PY{p}{(}\PY{p}{(}\PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{axis} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{,} \PYZbs{}
+                                          \PY{n}{Theta\PYZus{}p\PYZus{}1}\PY{p}{[}\PY{n}{burn}\PY{p}{:}\PY{p}{,}\PY{p}{]}\PY{o}{.}\PY{n}{std}\PY{p}{(}\PY{n}{axis} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{rownames} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{lambda\PYZus{}1\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdl{}}\PY{l+s}{\PYZbs{}}\PY{l+s}{lambda\PYZus{}2\PYZdl{}}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{colnames} \PY{o}{=} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Mean}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{Posterior Standard Deviation}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{around}\PY{p}{(}\PY{n}{table\PYZus{}estimate}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{)}\PY{p}{,} \PY{n}{colnames}\PY{p}{,} \PY{n}{rownames}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}60}]:}                               \$\textbackslash{}lambda\_1\$  \$\textbackslash{}lambda\_2\$
+         Posterior Mean                      3.100        0.938
+         Posterior Standard Deviation        0.284        0.118
+\end{Verbatim}
+        
+    \subsubsection{Implementation of Alternative
+Algorithms}\label{implementation-of-alternative-algorithms}
+
+The two previously mentioned alternative algorithms are implemented for
+the coal-mining data set. With the two alternative methods, we are able
+to conclude that there is only a single change point. However, the
+location is estimated to be at time $t=36$, different from Chib's
+result.
+
+\paragraph{Barry and Hartigan (1993) - Product Partition
+Distributions}\label{barry-and-hartigan-1993---product-partition-distributions}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         library(bcp)
+         set.seed(1234)
+         fit = bcp(c(y), burnin = 1000, mcmc = 6000, return.mcmc = TRUE)
+         plot(fit)
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_74_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         time = order(fit\PYZdl{}posterior.prob, decreasing = TRUE)[1]
+         pmeans = fit\PYZdl{}posterior.mean
+         pprob = fit\PYZdl{}posterior.prob
+         psamples = fit\PYZdl{}mcmc.means[,\PYZhy{}(1:1000)]
+         sd1 = sd(psamples[1:time[1], ])
+         sd2 = sd(psamples[\PYZhy{}(1:time[1]), ])
+         pstd = sqrt(fit\PYZdl{}posterior.var)
+         
+         cat(\PYZdq{}The estimated change points are at time\PYZdq{}, time, 
+             \PYZdq{}, with probabilities\PYZdq{}, round(pprob[time], 3), \PYZsq{}\PYZbs{}n\PYZsq{})
+         cat(\PYZdq{}The posterior means for the three periods are\PYZdq{}, 
+             round(c(mean(pmeans[1:time[1]]), mean(pmeans[\PYZhy{}(1:time[1])])), 3), \PYZsq{}\PYZbs{}n\PYZsq{})
+         cat(\PYZdq{}The posterior standard deviations for the three periods are (Monte Carlo)\PYZdq{}, 
+             round(c(sd1, sd2), 3), \PYZsq{}\PYZbs{}n\PYZsq{})
+         cat(\PYZdq{}The posterior standard deviations for the three periods are (Model Averaged)\PYZdq{}, 
+             round(c(mean(pstd[1:time[1]]), mean(pstd[\PYZhy{}(1:time[1])])), 3), \PYZsq{}\PYZbs{}n\PYZsq{})
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+The estimated change points are at time 36 , with probabilities 0.213 
+The posterior means for the three periods are 3.087 1.051 
+The posterior standard deviations for the three periods are (Monte Carlo) 0.263 0.408 
+The posterior standard deviations for the three periods are (Model Averaged) 0.226 0.236 
+
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         barplot(y, col = \PYZdq{}darkgray\PYZdq{}, width = 0.84, lwd = 2, 
+                 xlim = c(0, 113), ylim = c(0, 7), xlab = \PYZdq{}Time\PYZdq{}, ylab = expression(Y[t]), 
+                 main = \PYZdq{}Product Partition Estimation of Change Points\PYZdq{}, border = \PYZdq{}white\PYZdq{})
+         lines(1:length(y), c(fitted(fit)), type = \PYZsq{}p\PYZsq{}, col = \PYZdq{}blue\PYZdq{}, lwd = 2)
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_76_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \paragraph{Matterson and James (2013) - Nonparametric Multiple
+Change-point
+Analysis}\label{matterson-and-james-2013---nonparametric-multiple-change-point-analysis}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         library(ecp)
+         set.seed(1234)
+         fit = e.divisive(matrix(y, length(y), 1), R = 499)
+         cat(\PYZdq{}The number of change points found is\PYZdq{}, fit\PYZdl{}k.hat\PYZhy{}1, 
+             \PYZdq{}, and they are at time\PYZdq{}, head(fit\PYZdl{}estimates[\PYZhy{}1], \PYZhy{}1) \PYZhy{} 1, \PYZsq{}\PYZbs{}n\PYZsq{})
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+The number of change points found is 1 , and they are at time 36 
+
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}66}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{R} \PYZhy{}i y
+         state = fit\PYZdl{}cluster
+         time = cumsum(c(sum(state == 1), sum(state == 2)))
+         plot(\PYZhy{}1, xlim = c(1, length(state)), 
+              ylim = c(0, 7), xlab = \PYZdq{}Time\PYZdq{}, ylab = expression(Y[t]), 
+              main = \PYZdq{}Nonparametric Estimation of Change Points\PYZdq{})
+         for(i in 1:time[1])\PYZob{}
+             segments(i,0, i,y[i], lwd = 2, col = \PYZdq{}red\PYZdq{})
+         \PYZcb{}
+         abline(v = time[1], lwd = 2, lty = 2, col = \PYZdq{}darkgray\PYZdq{})
+         for(j in (time[1]+1):time[2])\PYZob{}
+             segments(j,0, j,y[j], lwd = 2, col = \PYZdq{}blue\PYZdq{})
+         \PYZcb{}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{STA663_Final_Report_Li_Fan_files/STA663_Final_Report_Li_Fan_79_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsection{Discussion and
+Comparisons}\label{discussion-and-comparisons}
+
+In this project, we presented the core ideas of Chib's method in fitting
+and comparing multiple change-point models. This is a classic Bayesian
+fitting framework where Monte Carlo Markov Chain is used to obtain
+posterior samples in order to approximate the joint posterior densities
+of all parameters of interest. In the beginning, the naive code was
+programmed for a first implementation. After lining profiling and
+looking into the code more carefully, we are able to optimize the code
+using vectorization (also to reduce the object defined as well as
+repeated calculation). We compared the time used for each update using
+both versions of code and demonstrated improvement upon the naive
+version. We developed unit test (including edge cases where the
+transition probabilities is negative) to make sure the functions are
+executing correctly, returning desired quantities. Then we demonstrated
+how the code (module functions) work using a simple example. A detailed
+illustrative example with simulated Gaussian time series was presented
+to show how to analyze such time series data and detect change point
+(and to prove whether this algorithm can find the correct number and the
+location of the change points). Finally, we analyzed the real data on
+coal-mining disasters. Throughout the analysis, two alternative
+algorithms are also used and their results compared to Chib's method. We
+now offer two cents on the three algorithms.
+
+Chib's algorithm has several advantages. First, it is quite innovative
+at that time. By presenting the change-point problem in the framework of
+a Hidden Markov Model, the posterior sampling can be carried out by
+Gibbs steps with conjugate priors. The only messy part that requires
+innovative thinking and a bit of programming is to sample the hidden
+states/regimes. Previous methods resort to Metroplis-Hastings steps, but
+it is in general difficult to find a proposal distribution that works
+well. Second, the output is quite complete. The model fit comes along
+with the posterior samples for all parameters, including for the hidden
+states. The posterior distribution of the change points is simply a
+function of the hidden states, which can be easily calculated once we
+have a sample of the hidden states. Moreover, it offers solid model
+evidence (Bayes factor) for making inferences on exactly how many change
+points control the process under study. Third, the framework is flexible
+so that extensions to more complex models are quite straightforward
+(regression, nonparametric models).
+
+However, each advantage comes with some disadvantages. Due to the nature
+of Hidden Markov Models, the forward-backward step is not easy to
+parallel, posing challenges to improving the speed of any single step.
+Besides, each MCMC step relies on its previous step, so simultaneous
+sampling all the posterior (as one would have done in common problems to
+save computation time) is impractical. So computation time is one
+drawback. Although we have improved the speed of the algorithm in
+Python, further improvement can possibly be made by programming in C,
+although we need to write customized sampling function for common
+parametric models. Second, obtaining model evidence for several models
+in Chib's method is expensive, since (1) multiple models need to be fit
+using the same algorithm (adding computation time) and (2) each fit
+requires a coordinate near the MLE obtained by MCEM (adding computation
+time).
+
+Compared to Chib's method, the two alternatives share some advantages
+and disadvantages. BH method (Barry and Hartigan, 1993) fit different
+means for each observation. In that regard, it is more general than
+Chib's method. But to make inferences on how many change points are
+available, we need to look at all the values and make subjective
+inferences. No model evidence is available from the algorithm so we
+cannot compare across models with different number of change points. And
+any inferences drawn for model comparisons are based on experiences. The
+R package is written in C and is quite efficient in time. A closer look
+at the algorithm indicates that they used a direct Markov sampling
+method that requires no recursive calculation. So it is just typical
+MCMC algorithm that would not expect to take longer than a fitting a
+Hidden Markov Model. The package can now only accommodate Gaussian
+models, and we indeed see the same conclusions drawn as Chib's method in
+the illustrative example. But different conclusions on the location of
+change point was reached in analyzing the Poisson coal-mining data.
+
+The nonparametric method (MJ method) developed recently by Matteson and
+James (2013) presents a completely different inference paradigm where
+classical p-value and permutation-based inference are used together to
+determine the change point locations and quantities. It is also quite
+fast but the inference is based on a one-time fit and selection of
+models are based on p-values where one need to determine the nominal
+type I error rate. So the inference techniques are completely different
+from the Bayesian framework. We do not offer a long discussion among two
+paradigms here but only acknowledge that each has their merits and
+drawbacks and cautions need to be taken in interpreting the results. The
+change points are identical using MJ method and Chib's method in
+analyzing Gaussian data, but slighltly different in analyzing the
+coal-mining data.
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

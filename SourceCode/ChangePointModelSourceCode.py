@@ -142,11 +142,11 @@ def mcem_update(y, m, family, tol):
     nk, uk = np.zeros(m + 1), np.zeros(m + 1)
     
     # Number of samples drawn to evaluate Q function
-    N_seq = np.repeat(np.array([1, 50, 50, 50, 100, 100, 300, 300, 300, 300]), 10)
+    N_seq = np.repeat(np.array([1, 50, 50, 100, 100, 100, 300, 300, 300, 300]), 10)
     nsim = N_seq.shape[0]
     
     # Check Convergence - start
-    theta_current, Ptran_current = theta, np.delete(np.diag(Ptran), -1)
+    Q_hat_current = 0.0
     
     # MECM updates
     for i in range(nsim):
@@ -175,11 +175,10 @@ def mcem_update(y, m, family, tol):
             Ptran[r, r + 1] = 1.0 - Ptran[r, r]
         
         # Check Convergence - stop
-        if(N_seq[i] > 100):
-            converge_theta = np.linalg.norm(theta - theta_current)
-            converge_Ptran = np.linalg.norm(np.delete(np.diag(Ptran), -1) - Ptran_current)
-            theta_current, Ptran_current = theta, np.delete(np.diag(Ptran), -1)
-            if(converge_theta < tol and converge_Ptran < tol):
+        if(N_seq[i] > 50):
+            converge_Q = np.absolute(Q_hat - Q_hat_current)
+            Q_hat_current = Q_hat
+            if(converge_Q < tol):
                 print "Convergence Reached"
                 return theta, Ptran
             elif(i == nsim - 1):

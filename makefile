@@ -8,7 +8,7 @@ STA663_Final_Report_Li_Fan.pdf: STA663_Final_Report_Li_Fan.tex
 all: STA663_Final_Report_Li_Fan.pdf 
 
 clean:
-	rm -rf *aux *log *pytxcode UnitTest/__pycache__ UnitTest/*pyc
+	rm -rf *aux *log *out *pytxcode UnitTest/__pycache__ UnitTest/*pyc
 
 allclean:
 	make clean
